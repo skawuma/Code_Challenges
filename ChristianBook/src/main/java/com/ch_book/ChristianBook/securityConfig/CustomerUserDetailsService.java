@@ -8,13 +8,19 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-
+import org.springframework.stereotype.Service;
 import com.ch_book.ChristianBook.repo.UserRepo;
 
-public class CustomerUserDetailService implements UserDetailsService{
+
+
+@Service
+public class CustomerUserDetailsService implements UserDetailsService{
+
+
     @Autowired
     UserRepo userRepo;
+
+
     private com.ch_book.ChristianBook.entity.User userDetail;
 
     @Override
