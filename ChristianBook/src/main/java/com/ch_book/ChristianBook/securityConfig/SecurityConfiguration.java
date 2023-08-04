@@ -56,7 +56,7 @@ public class SecurityConfiguration {
 public UserDetailsService  customerUserDetailService ()
 {
 
-    return new CustomerUserDetailsService ();
+    return new CustomerUserDetailsService();
 }
 
     @Bean
@@ -92,22 +92,14 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     .and()
     .csrf() 
     .disable()
-    
+  
     .authorizeHttpRequests()
-
             .requestMatchers("/api/v1/user/login","/api/v1/user/signup").permitAll() 
-          // .requestMatchers("/user/get","/user/getall","/user/update").hasRole("Admin")
-          /// .requestMatchers("/category/add","/category/get","/category/update").hasRole("Admin")
-             //.requestMatchers("/user/changePassword").hasAnyRole("Admin","User")
-             //.requestMatchers(HttpMethod.PUT,"/user/update").hasAnyRole("Admin","User")
             .anyRequest()
             .authenticated()
             .and()
-            // .headers().httpStrictTransportSecurity().disable()
-            // .and()
             .exceptionHandling()
-            .and()
-            
+            .and()  
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()

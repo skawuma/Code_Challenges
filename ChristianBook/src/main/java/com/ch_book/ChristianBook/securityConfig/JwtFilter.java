@@ -25,9 +25,9 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private CustomerUserDetailsService service;
 
-    Claims claims = null;
-    private String userName = null;
-
+    Claims claims;
+    private String userName;
+ String token ;
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException, java.io.IOException {
 
@@ -35,7 +35,7 @@ public class JwtFilter extends OncePerRequestFilter {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
         } else {
             String authorizationHeader = httpServletRequest.getHeader("Authorization");
-            String token = null;
+           
 
             if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
                 token = authorizationHeader.substring(7);
@@ -71,4 +71,6 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
 }
+
+
 

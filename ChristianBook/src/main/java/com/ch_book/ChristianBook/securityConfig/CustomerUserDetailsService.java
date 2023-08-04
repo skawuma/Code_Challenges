@@ -21,7 +21,8 @@ public class CustomerUserDetailsService implements UserDetailsService{
     UserRepo userRepo;
 
 
-    private com.ch_book.ChristianBook.entity.User userDetail;
+    private  static  com.ch_book.ChristianBook.entity.User userDetail;
+    
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -33,8 +34,8 @@ public class CustomerUserDetailsService implements UserDetailsService{
             throw new UsernameNotFoundException("User not found.");
     }
 
-   public  com.ch_book.ChristianBook.entity.User userDetail(){
-
-    return userDetail;
-   }
+    public com.ch_book.ChristianBook.entity.User getUserDetail() {
+        return userDetail;
+    }
+  
 }

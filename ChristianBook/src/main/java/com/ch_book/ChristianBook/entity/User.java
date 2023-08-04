@@ -9,11 +9,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @NamedQuery(name = "User.findByEmailId", query = "select u from User u where u.email=:email")
 
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name="user")
