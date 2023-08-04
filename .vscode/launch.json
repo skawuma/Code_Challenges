@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ChristianBookApplication<ChristianBook>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ch_book.ChristianBook.ChristianBookApplication",
+            "projectName": "ChristianBook",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
