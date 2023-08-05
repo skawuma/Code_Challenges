@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
  import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,13 @@ import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { FormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,10 +40,19 @@ import { FormsModule } from '@angular/forms';
   imports: [
    BrowserModule,
   AppRoutingModule,
+   NgbModule,
   MatToolbarModule,
   MatInputModule ,
   HttpClientModule,
-  FormsModule
+  FormsModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatDialogModule,
+  MatTableModule,
+  MatIconModule,
+
+  
+
 
   ],
   providers: [
