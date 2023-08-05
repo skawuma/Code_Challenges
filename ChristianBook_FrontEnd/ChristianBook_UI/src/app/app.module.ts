@@ -13,6 +13,9 @@ import { ShowDocumentDetailsComponent } from './show-document-details/show-docum
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './_auth/auth.interceptor';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,10 +34,18 @@ import { AdminComponent } from './admin/admin.component';
    BrowserModule,
   AppRoutingModule,
   MatToolbarModule,
-  MatInputModule 
+  MatInputModule ,
+  HttpClientModule,
+  FormsModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
