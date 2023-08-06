@@ -8,13 +8,14 @@ import { AdminComponent } from './admin/admin.component';
 import { ShowDocumentDetailsComponent } from './show-document-details/show-document-details.component';
 import { AddNewDocumentComponent } from './add-new-document/add-new-document.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { AuthGuard } from './_auth/auth.guard';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path:'signUp', component:SignUpComponent },
   {path: 'login',component: LoginComponent},
-  {path: 'user', component:UserComponent},
-  {path:'admin',component:AdminComponent},
+  {path: 'user', component:UserComponent,canActivate:[AuthGuard],data:{roles:['User']}},
+  {path:'admin',component:AdminComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path: 'addNewDoc', component:AddNewDocumentComponent},
   {path:'showDocDetails',component:ShowDocumentDetailsComponent},
   {path:'forbidden',component:ForbiddenComponent}

@@ -57,7 +57,30 @@ public class JwtUtil {
 	        final String username = extractUsername(token);
 	        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
 	    }
+        
+		public String generateToken1(UserDetails userDetails, String role) {
 
+	        Map<String, Object> claims = new HashMap<>();
+			
+			claims.put("role", role);
+		
+	   
+			return createToken1(claims,userDetails);
+		}
+
+		public String createToken1(Map<String, Object> claims, UserDetails userDetails) {
+
+	        
+
+	        return Jwts.builder()
+	                .setClaims(claims)
+					
+	                .setSubject(userDetails.getUsername())
+					
+	                .setIssuedAt(new Date(System.currentTimeMillis()))
+	                .setExpiration(new Date(System.currentTimeMillis() +1000*60*60*10))
+	                .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
+	    }
 
 	    public String generateToken(String username, String role){
 	        Map<String,Object> claims=new HashMap<>();

@@ -31,6 +31,7 @@ if(token){
                 if(err.status === 401) {
                     this.router.navigate(['/login']);
                 } else if(err.status === 403) {
+                    console.log(req);
                     this.router.navigate(['/forbidden']);
                 }
                 return throwError("Some thing is wrong");

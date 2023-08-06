@@ -94,7 +94,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     .disable()
   
     .authorizeHttpRequests()
-            .requestMatchers("/api/v1/user/login","/api/v1/user/signup").permitAll() 
+            .requestMatchers("/api/v1/user/login","/api/v1/user/signup","/api/v1/user/login1").permitAll() 
             .anyRequest()
             .authenticated()
             .and()

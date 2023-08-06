@@ -20,9 +20,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuard } from './_auth/auth.guard';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -50,17 +52,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   MatDialogModule,
   MatTableModule,
   MatIconModule,
-
+  MatCardModule
+  
   
 
 
   ],
   providers: [
+
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true
-    }
+    },
+    UserService
   ],
   bootstrap: [AppComponent]
 })

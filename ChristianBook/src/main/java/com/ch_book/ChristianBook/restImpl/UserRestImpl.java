@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ch_book.ChristianBook.entity.JwtResponse;
+import com.ch_book.ChristianBook.entity.User;
 import com.ch_book.ChristianBook.exceptions.GlobalExeptionHandler;
 import com.ch_book.ChristianBook.rest.UserRest;
 import com.ch_book.ChristianBook.service.UserService;
@@ -17,6 +19,8 @@ import jakarta.annotation.PostConstruct;
 @RestController
 @ComponentScan
 public class UserRestImpl implements UserRest {
+    private static final String String = null;
+	private static final User User = null;
 
     @Autowired
     UserService userService;
@@ -51,4 +55,15 @@ public class UserRestImpl implements UserRest {
 		userService.initRoleAndUser();
 		
 	}
+
+        @Override
+        public JwtResponse login1(Map<String, String> requestMap) {
+               try {
+            return userService.login1(requestMap);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+            return new JwtResponse(User, String);
+           
+        }
 }

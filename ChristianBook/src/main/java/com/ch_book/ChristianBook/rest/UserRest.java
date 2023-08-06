@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ch_book.ChristianBook.entity.JwtResponse;
+
 
 @RequestMapping(path="api/v1/user")
 public interface UserRest {
@@ -17,4 +19,6 @@ public interface UserRest {
     
     @PostMapping(path = "/login")
     public ResponseEntity<String> login(@RequestBody(required = true) Map<String, String> requestMap);
+ @PostMapping(path = "/login1")
+    public JwtResponse login1(@RequestBody(required = true)Map<String, String> requestMap);
 }

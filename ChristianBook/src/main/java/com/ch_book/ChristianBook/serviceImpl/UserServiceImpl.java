@@ -9,9 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ch_book.ChristianBook.entity.JwtResponse;
 import com.ch_book.ChristianBook.entity.User;
 import com.ch_book.ChristianBook.exceptions.GlobalExeptionHandler;
 import com.ch_book.ChristianBook.repo.UserRepo;
@@ -119,12 +121,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<String> login(Map<String, String> requestMap) {
     try{
+      
         Authentication auth = authenticationManager.authenticate(
      new UsernamePasswordAuthenticationToken(requestMap.get("email"), requestMap.get("password")));
      if (auth.isAuthenticated()) {
-        return new ResponseEntity<String>("{\"token\":\"" +
-                            jwtUtil.generateToken(customerUsersDetailsService.getUserDetail().getEmail(),
-                                    customerUsersDetailsService.getUserDetail().getRole()) + "\"}",
+          UserDetails userDetails = customerUsersDetailsService.loadUserByUsername(requestMap.get("email"));
+        User user= customerUsersDetailsService.getUserDetail();
+        return new ResponseEntity<String>("{ \"jwtToken\":\"" 
+       + jwtUtil.generateToken1(userDetails,user.getRole())
+                    //    + user +
+                    //         jwtUtil.generateToken(customerUsersDetailsService.getUserDetail().getEmail(),
+                    //                 customerUsersDetailsService.getUserDetail().getRole())
+                                    
+                                    + "\"}",
                             HttpStatus.OK);
 
     } 
@@ -136,4 +145,18 @@ public class UserServiceImpl implements UserService {
     HttpStatus.BAD_REQUEST);
     }
 
+ @Override
+    public JwtResponse login1(Map<String, String> requestMap) {
+        
+              Authentication auth = authenticationManager.authenticate(
+     new UsernamePasswordAuthenticationToken(requestMap.get("email"), requestMap.get("password")));
+    
+ UserDetails userDetails = customerUsersDetailsService.loadUserByUsername(requestMap.get("email"));
+
+ User user= customerUsersDetailsService.getUserDetail();
+ String newgeneratedToken=jwtUtil.generateToken1(userDetails,user.getRole());
+     
+        return new JwtResponse(user, newgeneratedToken);
+
+}
 }

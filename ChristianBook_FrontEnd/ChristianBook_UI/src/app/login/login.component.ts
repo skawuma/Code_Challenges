@@ -22,13 +22,16 @@ export class LoginComponent implements OnInit {
   login(loginForm: NgForm) {
     this.userService.login(loginForm.value).subscribe(
       (response: any) => {
-        this.userAuthService.setRoles(response.user.role);
+        this.userAuthService.setRoles1(response.user.role);
+
         this.userAuthService.setToken(response.jwtToken);
 
-        const role = response.user.role[0].roleName;
-        if (role === 'Admin') {
+        const role = response.user.role;
+        if (role == 'Admin') {
+          console.log(role);
           this.router.navigate(['/admin']);
         } else {
+          console.log(role);
           this.router.navigate(['/user']);
         }
       },

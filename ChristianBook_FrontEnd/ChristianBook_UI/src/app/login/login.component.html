@@ -1,5 +1,13 @@
 
 <div  class="container mt-5">
+    <br>
+    <mat-card  class="loginCard" layout-align="center center" >
+        <p class="text-center"> 
+            
+            <mat-card-title >Login</mat-card-title>
+       
+        </p>
+  
     <div  class="card" style="padding: 20px;">
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <p>
@@ -9,7 +17,7 @@
                 <input 
                 
                 matInput 
-                nrgModel
+                ngModel
                  name="email" 
                  id="email" 
                  placeholder="Email">
@@ -30,7 +38,7 @@
                 <mat-hint>Password</mat-hint>
             </mat-form-field>
         </p>
-            <button   class=" w-100" type = "submit"  mat-raised-button color="primary">Login</button>
+            <button   class=" w-200" type = "submit"  mat-raised-button color="primary">Login</button>
 
           
 
@@ -41,4 +49,8 @@
         <br>
         <button class="w-20"  type="submit" mat-raised-button (click)="registerUser()" > Create an Account </button>
     </div>
-</div>
+</mat-card>
+</div> 
+
+
+

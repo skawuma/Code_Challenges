@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  url =environment.apiUrl;
+  url =environment.apiUrl +"/api/v1/user";
   
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
   constructor(
@@ -16,7 +16,7 @@ export class UserService {
   ) {}
 
   public login(loginData: any) {
-    return this.httpclient.post(this.url + '/api/v1/user/login', loginData,
+    return this.httpclient.post(this.url + '/login1', loginData,
      {
      headers: this.requestHeader,
     }
@@ -25,34 +25,20 @@ export class UserService {
   public register(registerData:any){
     return this.httpclient.post(this.url + '/api/v1/user/sigup', registerData );
   }
-  public forUser() {
-    return this.httpclient.get(this.url + '/forUser', {
-      responseType: 'text',
-    });
-  }
-
-
-  public forAdmin() {
-    return this.httpclient.get(this.url + '/forAdmin', {
-      responseType: 'text',
-    });
-  }
-
+ 
   public roleMatch(allowedRoles:any):any {
-    let isMatch = false;
+    let isMatch = true;
     const userRoles: any = this.userAuthService.getRoles();
 
     if (userRoles != null && userRoles) {
-      for (let i = 0; i < userRoles.length; i++) {
-        for (let j = 0; j < allowedRoles.length; j++) {
-          if (userRoles[i].roleName === allowedRoles[j]) {
+      
+          if (userRoles.role === allowedRoles) {
             isMatch = true;
             return isMatch;
           } else {
             return isMatch;
           }
-        }
-      }
+  
     }
   }
 }

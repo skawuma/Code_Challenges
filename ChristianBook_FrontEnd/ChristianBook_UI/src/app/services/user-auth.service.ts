@@ -7,12 +7,18 @@ export class UserAuthService {
 
   constructor() { }
 
-  public setRoles(roles:[]) {
-    localStorage.setItem('roles', JSON.stringify(roles));
+  public setRoles(role:[]) {
+    localStorage.setItem('role', JSON.stringify(role));
+  }
+  public setRoles1(role:any) {
+    localStorage.setItem('role', role);
   }
 
-  public getRoles():[] {
-    return JSON.parse(localStorage.getItem('roles')??'null'); 
+  // public getRoles1():[] {
+  //   return JSON.parse(localStorage.getItem('role')??'null'); 
+  // }
+  public getRoles(): any {
+    return (localStorage.getItem('role'));
   }
 
   public setToken(jwtToken: any) {
@@ -34,18 +40,18 @@ export class UserAuthService {
 
 public isAdmin(){
 
-const roles: any[]= this.getRoles();
+const role= this.getRoles();
 //console.log(roles);
-return  roles[0].roleName ==='Admin';
+return  role==='Admin';
 
 }
 
 
 public isUser(){
 
-  const roles: any[]= this.getRoles();
+  const role = this.getRoles();
  // console.log(roles);
-  return  roles[0].roleName ==='User';
+  return  role ==='User';
   
   }
 }
