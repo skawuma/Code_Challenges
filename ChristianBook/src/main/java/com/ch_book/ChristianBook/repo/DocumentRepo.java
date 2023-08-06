@@ -7,6 +7,6 @@ import com.ch_book.ChristianBook.entity.Document;
 
 public interface DocumentRepo extends JpaRepository<Document, String> {
 
-Document getDocumentById(@Param("sku") String sku);
+Document getDocumentBySku(@Param("sku") String sku);
     
 }

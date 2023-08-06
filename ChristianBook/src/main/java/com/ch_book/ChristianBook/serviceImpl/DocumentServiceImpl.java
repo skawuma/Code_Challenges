@@ -55,7 +55,7 @@ private Document getDocumentFromMap(Map<String, String> requestMap) {
     @Override
     public ResponseEntity<Document> getDocById(String sku) {
         try {
-            return new ResponseEntity<>(documentRepo.getDocumentById(sku), HttpStatus.OK);
+            return new ResponseEntity<>(documentRepo.getDocumentBySku(sku), HttpStatus.OK);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
