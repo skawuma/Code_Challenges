@@ -39,15 +39,6 @@ public class UserRestImpl implements UserRest {
        return GlobalExeptionHandler.getResponseEntity(GlobalExeptionHandler.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @Override
-    public ResponseEntity<String> login(Map<String, String> requestMap) {
-        try {
-            return userService.login(requestMap);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return GlobalExeptionHandler.getResponseEntity(GlobalExeptionHandler.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
     
 
     	 @PostConstruct
@@ -57,9 +48,9 @@ public class UserRestImpl implements UserRest {
 	}
 
         @Override
-        public JwtResponse login1(Map<String, String> requestMap) {
+        public JwtResponse login(Map<String, String> requestMap) {
                try {
-            return userService.login1(requestMap);
+            return userService.login(requestMap);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

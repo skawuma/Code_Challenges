@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './_auth/auth.guard';
 import { UserService } from './services/user.service';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { UserService } from './services/user.service';
       useClass:AuthInterceptor,
       multi:true
     },
-    UserService
+    UserService,
+    provideAnimations()
   ],
   bootstrap: [AppComponent]
 })

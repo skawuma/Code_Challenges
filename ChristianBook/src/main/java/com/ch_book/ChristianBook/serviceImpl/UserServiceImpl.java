@@ -23,7 +23,7 @@ import com.ch_book.ChristianBook.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -118,35 +118,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public ResponseEntity<String> login(Map<String, String> requestMap) {
-    try{
-      
-        Authentication auth = authenticationManager.authenticate(
-     new UsernamePasswordAuthenticationToken(requestMap.get("email"), requestMap.get("password")));
-     if (auth.isAuthenticated()) {
-          UserDetails userDetails = customerUsersDetailsService.loadUserByUsername(requestMap.get("email"));
-        User user= customerUsersDetailsService.getUserDetail();
-        return new ResponseEntity<String>("{ \"jwtToken\":\"" 
-       + jwtUtil.generateToken1(userDetails,user.getRole())
-                    //    + user +
-                    //         jwtUtil.generateToken(customerUsersDetailsService.getUserDetail().getEmail(),
-                    //                 customerUsersDetailsService.getUserDetail().getRole())
-                                    
-                                    + "\"}",
-                            HttpStatus.OK);
 
-    } 
-    
-}catch (Exception ex){
-        log.error("{}", ex);
-    }
-    return new ResponseEntity<String>("{\"message\":\"" + "Bad Credentials." + "\"}",
-    HttpStatus.BAD_REQUEST);
-    }
 
  @Override
-    public JwtResponse login1(Map<String, String> requestMap) {
+    public JwtResponse login(Map<String, String> requestMap) {
         
               Authentication auth = authenticationManager.authenticate(
      new UsernamePasswordAuthenticationToken(requestMap.get("email"), requestMap.get("password")));
