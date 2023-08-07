@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.ch_book.ChristianBook.entity.Document;
 
@@ -22,10 +22,10 @@ public interface DocumentRest {
 @PostMapping(path = "/add")
     ResponseEntity<String> addNewDocument(@RequestBody Map<String, String> requestMap);  
 
-@GetMapping(path = "/getById/{id}")
+@GetMapping(path = "/getById/{sku}")
     ResponseEntity<Document> getDocById(@PathVariable String sku);
 
-@GetMapping(path = "/search")
-public ResponseEntity<Document> viewDoc(@RequestParam String sku);
+@GetMapping(path = "/search/{sku}")
+public ResponseEntity<Document> viewDoc(@PathVariable String sku);
 
 }

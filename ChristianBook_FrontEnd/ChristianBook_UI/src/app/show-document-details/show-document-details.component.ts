@@ -11,12 +11,18 @@ import { map } from 'rxjs';
   styleUrls: ['./show-document-details.component.css']
 })
 export class ShowDocumentDetailsComponent implements OnInit {
-
+sku:any
   showTable =false;
   showLoadButton = false;
   documentDetails: Document[]=[];
+  document:Document={
+    sku: '',
+    author: '',
+    title: '',
+    price: 0
+  }
   displayedColumns: string[] = ['SKU', 'Author','Title','Price']
-
+  show:boolean=false;
 
   constructor( private documentService:DocumentService,
     private router:Router
@@ -54,6 +60,42 @@ public searchBykeyword(searchkeyword:any){
 this.getDocumentById(searchkeyword);
 
 }
+
+searchDocument(sku:any):any{
+  this.show=true;
+  console.log(sku);
+  this.documentService.getById(sku)
+  .subscribe((resp:any)=>{
+  //resp.forEach((p: Document)=> this.documentDetails.push(p));
+  this.document=resp
+  console.log(this.document);
+  console.log(resp);
+
+},(error:HttpErrorResponse)=>{
+  console.log(console.error);
+} 
+
+);
+}
+idValid:boolean=false;
+validateId(){
+    if(this.sku>999){
+        this.idValid=true;
+    }
+    else if(this.sku<1){
+        this.idValid=true;
+    }else{
+        this.idValid=false;
+    }
+}
+
+
+
+
+
+
+
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.ch_book.ChristianBook.serviceImpl;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Locale.Category;
 import java.util.Map;
 import java.util.Optional;
@@ -33,7 +34,7 @@ public class DocumentServiceImpl implements DocumenrService {
             if (jwtFilter.isAdmin()) {
 
                 documentRepo.save(getDocumentFromMap(requestMap));
-                return GlobalExeptionHandler.getResponseEntity("Product Added Successfully.", HttpStatus.OK);
+                return GlobalExeptionHandler.getResponseEntity("Document Added Successfully.", HttpStatus.OK);
 
             } else
                 return GlobalExeptionHandler.getResponseEntity(GlobalExeptionHandler.UNAUTHORIZED_ACCESS,
@@ -48,12 +49,19 @@ public class DocumentServiceImpl implements DocumenrService {
     private Document getDocumentFromMap(Map<String, String> requestMap) {
 
         Document document = new Document();
-        Set<String> set = new HashSet<>();
+        document.setSku(requestMap.get("sku"));
+        Set<String> set = new HashSet<>();  
         set.add(requestMap.get("author"));
-        document.setAuthor(set);
-        document.setTitle(requestMap.get("description"));
+        for (final String string : set) {
+            System.out.println(string);
+             document.setAuthor(set);
+             System.out.println("Clean Out!!");
+              System.out.println(string);
+        }
+               document.setTitle(requestMap.get("title"));
         document.setPrice(Integer.parseInt(requestMap.get("price")));
         return document;
+    
     }
 
     @Override
@@ -86,7 +94,7 @@ public class DocumentServiceImpl implements DocumenrService {
                 documentRepo.save(document);
                 return new ResponseEntity<>(document,HttpStatus.OK);
             } else
-                throw new RecordAlreadyPresentException("Flight with number: " + document.getSku() + " already present");
+                throw new RecordAlreadyPresentException("Document with number: " + document.getSku() + " already present");
         }
             catch(RecordAlreadyPresentException e)
             {

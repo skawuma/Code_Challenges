@@ -25,8 +25,9 @@ import {MatCardModule} from '@angular/material/card';
  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './_auth/auth.guard';
 import { UserService } from './services/user.service';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -44,19 +45,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AdminComponent
   ],
   imports: [
-   BrowserModule,
-  AppRoutingModule,
-   NgbModule,
-  MatToolbarModule,
-  MatInputModule ,
-  HttpClientModule,
-  FormsModule,
-  MatButtonModule,
-  MatFormFieldModule,
-  MatDialogModule,
-  MatTableModule,
-  MatIconModule,
-  MatCardModule
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatInputModule, 
+    MatCardModule,
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule
   
   
 

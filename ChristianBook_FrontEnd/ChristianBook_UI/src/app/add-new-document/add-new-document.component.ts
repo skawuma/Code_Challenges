@@ -14,6 +14,7 @@ export class AddNewDocumentComponent implements OnInit {
   isNewDocument =true;
   submitted = false;
 
+
 document:Document={
   sku: '',
   author: '',
@@ -25,10 +26,7 @@ document:Document={
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-this.document=this.activatedRoute.snapshot.data['document']
-if ( this.document && this.document.sku){
-  this.isNewDocument =false;
-}
+
   }
 
 public addDocument(documentForm: NgForm ){
