@@ -12,8 +12,8 @@ import { map } from 'rxjs';
 })
 export class ShowDocumentDetailsComponent implements OnInit {
 sku:any
-  showTable =false;
-  showLoadButton = false;
+  showTable =true;
+  
   documentDetails: Document[]=[];
   document:Document={
     sku: '',
@@ -29,6 +29,7 @@ sku:any
     ) { }
 
   ngOnInit(): void {
+   
   }
 
 public getDocumentById(sku: any){
@@ -66,8 +67,9 @@ searchDocument(sku:any):any{
   console.log(sku);
   this.documentService.getById(sku)
   .subscribe((resp:any)=>{
-  //resp.forEach((p: Document)=> this.documentDetails.push(p));
+ // resp.forEach((p: Document)=> this.documentDetails.push(p));
   this.document=resp
+  this.documentDetails=[];
   console.log(this.document);
   console.log(resp);
 

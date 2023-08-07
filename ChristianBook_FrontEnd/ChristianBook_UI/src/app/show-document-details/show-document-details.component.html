@@ -13,7 +13,7 @@
     <br>
     <input type="submit" value="SEARCH" class="btn btn-primary" (click)="searchDocument(sku)" [disabled]="!sku">
   </div>
-  <div >
+  <div  *ngIf="showTable">
     
     <table mat-table [dataSource]="documentDetails" class="mat-elevation-z8">
 
