@@ -16,7 +16,7 @@ export class UserService {
   ) {}
 
   public login(loginData: any) {
-    return this.httpclient.post(this.url + '/login1', loginData,
+    return this.httpclient.post(this.url + '/login', loginData,
      {
      headers: this.requestHeader,
     }

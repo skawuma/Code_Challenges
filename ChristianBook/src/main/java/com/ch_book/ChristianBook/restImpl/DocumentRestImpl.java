@@ -39,5 +39,29 @@ public class DocumentRestImpl implements DocumentRest{
         }
         return new ResponseEntity<>(new Document(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @Override
+    public ResponseEntity<Document> viewDoc(String sku) {
+               try {
+
+        Document document =     documentService.viewDocument(sku);
+        if(document==null){
+            return new ResponseEntity(GlobalExeptionHandler.INVALID_DATA,HttpStatus.BAD_REQUEST);
+        }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(new Document(),HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<Document> addNewDoc(Document document) {
+       try {
+            return  documentService.addDocument(document);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(new Document(),HttpStatus.INTERNAL_SERVER_ERROR);
+    }
     
 }

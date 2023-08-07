@@ -21,11 +21,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field'
+
  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './_auth/auth.guard';
 import { UserService } from './services/user.service';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
 
 @NgModule({
   declarations: [

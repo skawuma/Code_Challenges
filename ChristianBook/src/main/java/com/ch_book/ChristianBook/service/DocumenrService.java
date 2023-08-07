@@ -11,6 +11,10 @@ public interface DocumenrService {
     ResponseEntity<String> addNewProduct(Map<String, String> requestMap);
 
     ResponseEntity<Document> getDocById(String sku);
+
+    public Document viewDocument(String sku);
+
+    ResponseEntity<Document> addDocument(Document document);
     
 
 

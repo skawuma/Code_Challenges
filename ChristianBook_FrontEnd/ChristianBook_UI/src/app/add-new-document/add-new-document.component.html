@@ -1,1 +1,57 @@
-<p>add-new-document works!</p>
+
+
+
+
+<mat-card  class="loginCard">
+
+    <mat-card-header>
+        <mat-card-title align=" center">Add Document</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <!-- The form goes here -->
+
+        
+        
+        
+                        <form #documentForm="ngForm" (ngSubmit)="addDocument(documentForm)">
+        
+        
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>SKU</mat-label>
+                                <input matInput placeholder="sku" [(ngModel)]="document.sku" name="sku">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Author</mat-label>
+                                <input matInput placeholder="Author" [(ngModel)]="document.author"
+                                    name="author">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Title</mat-label>
+                                <input matInput placeholder="Title" [(ngModel)]="document.title"
+                                    name="title">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label> Price</mat-label>
+                                <input matInput placeholder="Price" [(ngModel)]="document.price"
+                                    name="price">
+                            </mat-form-field>
+                             
+                             <div align="end">
+                                <button mat-stroked-button color="primary" style="margin-right: 3px">Clear </button>
+                                <button type= mat-stroked-button color="primary">Add Product</button>
+                               
+                            </div>
+        
+                        </form>
+                       
+                       
+            
+        
+        
+        
+        </mat-card-content>
+
+</mat-card>
+
+
