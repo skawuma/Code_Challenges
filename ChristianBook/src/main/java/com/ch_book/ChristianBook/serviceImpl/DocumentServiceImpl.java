@@ -50,15 +50,16 @@ public class DocumentServiceImpl implements DocumenrService {
 
         Document document = new Document();
         document.setSku(requestMap.get("sku"));
-        Set<String> set = new HashSet<>();  
-        set.add(requestMap.get("author"));
-        for (final String string : set) {
-            System.out.println(string);
-             document.setAuthor(set);
-             System.out.println("Clean Out!!");
-              System.out.println(string);
-        }
-               document.setTitle(requestMap.get("title"));
+        // Set<String> set = new HashSet<>();  
+        // set.add(requestMap.get("author"));
+        // for (final String string : set) {
+        //     System.out.println(string);
+        //      document.setAuthor(set);
+        //      System.out.println("Clean Out!!");
+        //       System.out.println(string);
+        // }
+        document.setAuthor(requestMap.get("author"));
+        document.setTitle(requestMap.get("title"));
         document.setPrice(Integer.parseInt(requestMap.get("price")));
         return document;
     

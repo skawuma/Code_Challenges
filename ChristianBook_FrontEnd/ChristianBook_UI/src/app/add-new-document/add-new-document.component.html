@@ -2,91 +2,95 @@
 
 
 <mat-card  class="loginCard" layout-align="center center" >
-    
+    <!-- <div [hidden]="submitted" style="width: 400px;"> -->
     <form (ngSubmit)="onSubmit()">
 
  
 
-  <div>
-    <p class="text-center" > 
-        
-        <mat-card-title  >Create A new Documet</mat-card-title>
-   
-    </p><br>
-    <div >
-        <h4>
-            Please Fill Out required Fields
-            </h4>
-        
-    </div> 
-<p>
-    <mat-form-field appearance="outline" fxFlex class="w-100">
-        <mat-label>  SKU </mat-label>
-        <input   
-        matInput 
-        [(ngModel)]="document.sku"
-         name="sku" 
-         id="sku" 
-         placeholder="SKU">
-        
-        <mat-hint> SKU</mat-hint>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="outline" fxFlex class="w-100">
-        <mat-label> Title </mat-label>
-        <input 
-        
-        matInput 
-        [(ngModel)]="document.title"
-         name="title" 
-         id="title" 
-         placeholder="Title ">
-        
-        <mat-hint>Title</mat-hint>
-    </mat-form-field>
-  </p>
-
-  <p>
-    <mat-form-field appearance="outline" fxFlex class="w-100">
-        <mat-label> Author </mat-label>
-        <input 
-        
-        matInput 
-        [(ngModel)]="document.author"
-         name="author" 
-         id="author" 
-         placeholder="Author ">
-        
-        <mat-hint>Author</mat-hint>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="outline" fxFlex class="w-100">
-        <mat-label> Price </mat-label>
-        <input 
-        
-        matInput 
-        [(ngModel)]="document.price"
-         name="price" 
-         id="price" 
-         placeholder="Price ">
-        
-        <mat-hint>Price</mat-hint>
-    </mat-form-field>
-
-  </p>
-  </div>
-<br>
-<br>
-
-
-
-  <div align="center">
-    <button mat-stroked-button color="primary" style="margin-right: 3px">Clear </button>
-    <button type="submit"  mat-stroked-button color="primary">Add Product</button>
-    
-</div>
-</form>
+        <div>
+          <p class="text-center" > 
+              
+              <mat-card-title  >Create A new Documet</mat-card-title>
+         
+          </p><br>
+          <div >
+              <h4>
+                  Please Fill Out required Fields
+                  </h4>
+              
+          </div> 
+      <p>
+          <mat-form-field appearance="outline" fxFlex class="w-100">
+              <mat-label>  SKU </mat-label>
+              <input   
+              matInput 
+              [(ngModel)]="document.sku"
+               name="sku" 
+               id="sku" 
+               placeholder="SKU">
+              
+              <mat-hint> SKU</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" fxFlex class="w-100">
+              <mat-label> Title </mat-label>
+              <input 
+              
+              matInput 
+              [(ngModel)]="document.title"
+               name="title" 
+               id="title" 
+               placeholder="Title ">
+              
+              <mat-hint>Title</mat-hint>
+          </mat-form-field>
+        </p>
+      
+        <p>
+          <mat-form-field appearance="outline" fxFlex class="w-100">
+              <mat-label> Author </mat-label>
+              <input 
+              
+              matInput 
+              [(ngModel)]="document.author"
+               name="author" 
+               id="author" 
+               placeholder="Author ">
+              
+              <mat-hint>Author</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" fxFlex class="w-100">
+              <mat-label> Price </mat-label>
+              <input 
+              
+              matInput 
+              [(ngModel)]="document.price"
+               name="price" 
+               id="price" 
+               placeholder="Price ">
+              
+              <mat-hint>Price</mat-hint>
+          </mat-form-field>
+      
+        </p>
+        </div>
+      <br>
+      <br>
+      
+      
+      
+        <div align="center">
+          <button mat-stroked-button color="primary" style="margin-right: 3px">Clear </button>
+          <button type="submit"  mat-stroked-button color="primary">Add Product</button>
+          
+      </div>
+      </form>
+   <!-- </div>  -->
+   <!-- <div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+  </div> -->
 </mat-card>
 

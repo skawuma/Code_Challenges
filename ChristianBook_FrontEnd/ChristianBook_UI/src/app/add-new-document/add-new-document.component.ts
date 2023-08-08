@@ -61,6 +61,7 @@ save() {
   this.documentService.add(this.document)
   .subscribe(data => console.log(data),
   error => console.log(error));
+  
   this.document;
   //this.gotoList();
 }

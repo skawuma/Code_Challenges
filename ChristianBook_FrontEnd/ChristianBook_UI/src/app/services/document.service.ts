@@ -18,8 +18,8 @@ export class DocumentService {
     })
   }
 
- public  getById(sku: any) {
-    return this.httpClient.get(this.url + "/getById/" + sku);
+ public  getById(sku: any):Observable<any> {
+    return this.httpClient.get<Document[]>(this.url + "/getById/" + sku);
   }
 
   searchDocumentBySku(searchSku: any) {

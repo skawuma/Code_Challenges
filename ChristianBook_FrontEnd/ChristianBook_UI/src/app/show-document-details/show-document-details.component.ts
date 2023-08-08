@@ -13,14 +13,14 @@ import { map } from 'rxjs';
 export class ShowDocumentDetailsComponent implements OnInit {
 sku:any
   showTable =true;
-  
+  submitted=true;
   documentDetails: Document[]=[];
-  document:Document={
-    sku: '',
-    author: '',
-    title: '',
-    price: 0
-  }
+  // document:Document={
+  //   sku: '',
+  //   author: '',
+  //   title: '',
+  //   price: 0
+  // }
   displayedColumns: string[] = ['SKU', 'Author','Title','Price']
   show:boolean=false;
 
@@ -32,45 +32,17 @@ sku:any
    
   }
 
-public getDocumentById(sku: any){
-
-  this.showTable= false;
-  this.documentService.getById(sku)
- 
-  .subscribe(
-    (resp:any) =>{
-
-      resp.forEach((p: Document)=> this.documentDetails.push(p));
-      console.log(this.documentDetails);
-      this.showTable =true;
-
-    },(error:HttpErrorResponse)=>{
-      console.log(console.error);
-    } 
-    
-
-  );
-
-
-}
-
-public searchBykeyword(searchkeyword:any){
-  console .log (searchkeyword);
-
-  this.documentDetails =[];
-this.getDocumentById(searchkeyword);
-
-}
 
 searchDocument(sku:any):any{
-  this.show=true;
+  
   console.log(sku);
   this.documentService.getById(sku)
-  .subscribe((resp:any)=>{
- // resp.forEach((p: Document)=> this.documentDetails.push(p));
-  this.document=resp
-  this.documentDetails=[];
-  console.log(this.document);
+  .subscribe(
+    (resp:any) =>{
+//resp.forEach((p)=> this.documentDetails.push(p));
+  this.documentDetails= new Array(resp);
+
+  console.log(this.documentDetails);
   console.log(resp);
 
 },(error:HttpErrorResponse)=>{

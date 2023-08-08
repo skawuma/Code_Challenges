@@ -1,19 +1,19 @@
 
 
-
+<mat-card>
 
 <h3 class="font-weight-bold">Search SKU</h3>
 <form action="">
 
   <label for="">SKU:</label>
-  <div class="center">
+
     <input (blur)="validateId()" type="number" class="form-control" type="number" [(ngModel)]="sku" [ngModelOptions]="{standalone: true}" required>
-    <small *ngIf="idValid" style="color: red;">Invalid ID. Please enter an id between 1 to 999.</small>
+   
     <br>
     <br>
     <input type="submit" value="SEARCH" class="btn btn-primary" (click)="searchDocument(sku)" [disabled]="!sku">
-  </div>
-  <div  *ngIf="showTable">
+ 
+  <div  *ngIf="showTable" >
     
     <table mat-table [dataSource]="documentDetails" class="mat-elevation-z8">
 
@@ -52,4 +52,5 @@
  
 
 </form>
+</mat-card>
 

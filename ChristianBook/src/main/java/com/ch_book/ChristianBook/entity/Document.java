@@ -23,7 +23,7 @@ public class Document implements Serializable {
 
     @Id
     private String sku;
-    private Set<String> author;
+    private String  author;
     private String title;
     private Integer price;
     
