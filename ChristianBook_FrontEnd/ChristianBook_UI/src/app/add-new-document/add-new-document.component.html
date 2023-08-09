@@ -3,7 +3,7 @@
 
 <mat-card  class="loginCard" layout-align="center center" >
     <!-- <div [hidden]="submitted" style="width: 400px;"> -->
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" *ngIf="!registerSucess" id="my_form">
 
  
 
@@ -88,9 +88,6 @@
           
       </div>
       </form>
-   <!-- </div>  -->
-   <!-- <div [hidden]="!submitted">
-    <h4>You submitted successfully!</h4>
-  </div> -->
+  <h1 *ngIf="registerSucess"> Register Success :D </h1>
 </mat-card>
 

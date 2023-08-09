@@ -12,15 +12,15 @@ import { map } from 'rxjs';
 })
 export class ShowDocumentDetailsComponent implements OnInit {
 sku:any
-  showTable =true;
+  showTable =false;
   submitted=true;
   documentDetails: Document[]=[];
-  // document:Document={
-  //   sku: '',
-  //   author: '',
-  //   title: '',
-  //   price: 0
-  // }
+  document:Document={
+    sku: '',
+    author: '',
+    title: '',
+    price: 0
+  }
   displayedColumns: string[] = ['SKU', 'Author','Title','Price']
   show:boolean=false;
 
@@ -39,12 +39,19 @@ searchDocument(sku:any):any{
   this.documentService.getById(sku)
   .subscribe(
     (resp:any) =>{
-//resp.forEach((p)=> this.documentDetails.push(p));
-  this.documentDetails= new Array(resp);
 
+this.documentDetails= new Array(resp);
+// this.showTable =true;
+
+//redirect to view DocumentDetails Page
+  this.router.navigate(['/viewSearhDoc',{sku:sku}])
+ 
+   console.log(resp);
+   console.log('Before');
   console.log(this.documentDetails);
-  console.log(resp);
-
+  this.documentDetails.push(resp);
+  console.log('After');
+  console.log(this.documentDetails);
 },(error:HttpErrorResponse)=>{
   console.log(console.error);
 } 

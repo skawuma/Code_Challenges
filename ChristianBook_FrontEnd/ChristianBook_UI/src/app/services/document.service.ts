@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Document } from '../_model/document.model';
 import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,10 @@ export class DocumentService {
     return this.httpClient.get(this.url + "/search/"+ searchSku);
   }
 
-  addDocument(document:Document): Observable<Object> {
-    return this.httpClient.post(`${this.url}/addDoc`, document);
+  addDocument(document:FormData){
+   return this.httpClient.post<Document>(`${this.url}/addDoc`, document);
+
+  
   }
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DocumentService } from '../services/document.service';
 import { Document } from '../_model/document.model';
 import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -13,14 +13,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AddNewDocumentComponent implements OnInit {
   isNewDocument =true;
   submitted = false;
-
-
+  registerSucess=false;
 document:Document={
   sku: '',
   author: '',
   title: '',
   price: 0
 }
+  myform!: FormGroup;
 
   constructor(private documentService:DocumentService,
     private activatedRoute: ActivatedRoute) { }
@@ -29,11 +29,14 @@ document:Document={
 
   }
 
+  
+
 public addDocument(documentForm: NgForm ){
-  const documentFormData = this.preparedocumentData(this.document);
-  this.documentService.add(documentFormData).subscribe(
-    (response)=>{
-      documentForm.reset();   
+    const formData = new FormData();
+  this.documentService.addDocument(formData ).subscribe(
+    (response:Document)=>{
+      console.log(response);
+      // documentForm.reset();   
     },
     (error:HttpErrorResponse)=>{
       console.log(error);
@@ -42,14 +45,6 @@ public addDocument(documentForm: NgForm ){
 
 }
 
-public preparedocumentData(document:Document):FormData{
-
-  const formData = new FormData();
-  formData.append('document', 
-  new Blob([ JSON.stringify(document)],{type:'applicatio/json'}));
-
-return formData;
-}
 
 
 newBooking(): void {
@@ -62,18 +57,22 @@ save() {
   .subscribe(data => console.log(data),
   error => console.log(error));
   
-  this.document;
+  
   //this.gotoList();
 }
 
 onSubmit() {
+  
+    this.save();
+    console.log("Form Submitted!");
+  
+  
+  
+  
   this.submitted = true;
-  this.save();
 }
 
-// gotoList() {
-//   this.router.navigate(['/bookings']);
-// }
+
 
 
 

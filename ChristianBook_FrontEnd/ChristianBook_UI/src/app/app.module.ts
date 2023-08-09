@@ -28,6 +28,7 @@ import { UserService } from './services/user.service';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
+import { ViewSearchedDocComponent } from './view-searched-doc/view-searched-doc.component';
 
 
 
@@ -42,7 +43,8 @@ import { RouterModule } from '@angular/router';
     ShowDocumentDetailsComponent,
     HomeComponent,
     UserComponent,
-    AdminComponent
+    AdminComponent,
+    ViewSearchedDocComponent
   ],
   imports: [
     BrowserModule,

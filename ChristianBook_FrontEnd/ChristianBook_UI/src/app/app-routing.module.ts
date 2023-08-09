@@ -9,10 +9,16 @@ import { ShowDocumentDetailsComponent } from './show-document-details/show-docum
 import { AddNewDocumentComponent } from './add-new-document/add-new-document.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './_auth/auth.guard';
+import { ViewSearchedDocComponent } from './view-searched-doc/view-searched-doc.component';
+import { DocumentResolverService } from './services/document-resolver.service';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path:'signUp', component:SignUpComponent },
+  {path:'viewSearhDoc', component:ViewSearchedDocComponent ,
+  resolve:{
+    document:DocumentResolverService
+  }},
   {path: 'login',component: LoginComponent},
   {path: 'user', component:UserComponent,canActivate:[AuthGuard],data:{roles:['User']}},
   {path:'admin',component:AdminComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
